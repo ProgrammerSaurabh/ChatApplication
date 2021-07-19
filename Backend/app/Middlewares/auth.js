@@ -3,11 +3,11 @@ const User = require("../Models/User");
 
 const authMiddleware = async (req, res, next) => {
   if (!"authorization" in req.headers) {
-    res.send(500).json({ message: "Authorization is required in headers" });
+    res.send(400).json({ message: "Authorization is required in headers" });
   }
 
   if (!req.headers.authorization.startsWith("Bearer")) {
-    res.send(500).json({ message: "Authorization is required in headers" });
+    res.send(400).json({ message: "Authorization is required in headers" });
   }
 
   let { authorization: token } = req.headers;
